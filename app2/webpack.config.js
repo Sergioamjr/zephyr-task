@@ -16,7 +16,6 @@ module.exports = withZephyr()({
     static: path.join(__dirname, "dist"),
     port: 3002,
     hot: false,
-    // inline: false,
   },
   output: {
     publicPath: "auto",
@@ -30,6 +29,10 @@ module.exports = withZephyr()({
         options: {
           presets: ["@babel/preset-react"],
         },
+      },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader", "postcss-loader"],
       },
     ],
   },
