@@ -1,6 +1,8 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { withZephyr } = require("zephyr-webpack-plugin");
-const { ModuleFederationPlugin } = require("@module-federation/enhanced/webpack");
+const {
+  ModuleFederationPlugin,
+} = require("@module-federation/enhanced/webpack");
 const path = require("path");
 const mfConfig = require("./module-federation.config");
 
@@ -8,6 +10,9 @@ module.exports = withZephyr()({
   entry: "./src/index",
   mode: "development",
   devServer: {
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+    },
     static: path.join(__dirname, "dist"),
     port: 3001,
   },
