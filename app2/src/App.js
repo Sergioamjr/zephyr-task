@@ -10,7 +10,7 @@ const App = () => {
         backgroundColor: "cyan",
       }}
     >
-      <h1>App 2</h1>
+      <h1>App 2 New text</h1>
     </div>
   );
 };
