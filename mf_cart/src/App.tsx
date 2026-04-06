@@ -1,6 +1,10 @@
 import React from "react";
 
-const App = () => {
+export type Props = {
+  name: string;
+};
+
+const App = ({ name }: Props) => {
   return (
     <div
       style={{
@@ -10,7 +14,7 @@ const App = () => {
         backgroundColor: "cyan",
       }}
     >
-      <h1 className="text-red-300">My Cart!!</h1>
+      <h1 className="text-red-300">My Cart!! {name}</h1>
     </div>
   );
 };

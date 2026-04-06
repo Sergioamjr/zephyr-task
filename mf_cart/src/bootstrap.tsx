@@ -2,7 +2,7 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import "./input.css";
 
-import App from "./App";
-
+import App, { Props } from "./App";
 const root = createRoot(document.getElementById("root")!);
-root.render(<App />);
+const defualtProps = {} as Props;
+root.render(<App {...defualtProps} />);

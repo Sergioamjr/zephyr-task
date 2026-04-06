@@ -19,7 +19,7 @@ const App = () => {
         <RemoteApp />
       </Suspense>
       <Suspense fallback={"loading..."}>
-        <RemoteCart test="1" />
+        <RemoteCart name="Sergio" />
       </Suspense>
     </div>
   );
