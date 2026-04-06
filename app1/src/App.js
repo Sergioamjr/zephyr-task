@@ -1,5 +1,6 @@
 import React, { Suspense } from "react";
 const RemoteApp = React.lazy(() => import("default_webpack_mf_second/App"));
+const RemoteCart = React.lazy(() => import("mf_cart/App"));
 
 const App = () => {
   return (
@@ -16,6 +17,9 @@ const App = () => {
       </div>
       <Suspense fallback={"loading..."}>
         <RemoteApp />
+      </Suspense>
+      <Suspense fallback={"loading..."}>
+        <RemoteCart test="1" />
       </Suspense>
     </div>
   );
