@@ -34,8 +34,17 @@ module.exports = withZephyr()({
         test: /\.css$/i,
         use: ["style-loader", "css-loader", "postcss-loader"],
       },
+      {
+        test: /\.tsx?$/,
+        use: "ts-loader",
+        exclude: /node_modules/,
+      },
     ],
   },
+  resolve: {
+    extensions: [".tsx", ".ts", ".js"], // Allows omitting extensions in imports
+  },
+  devtool: "inline-source-map",
   plugins: [
     new ModuleFederationPlugin(mfConfig),
     new HtmlWebpackPlugin({

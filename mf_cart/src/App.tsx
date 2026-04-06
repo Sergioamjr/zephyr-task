@@ -1,7 +1,6 @@
 import React from "react";
 
-const App = (props) => {
-  console.log("cart", props);
+const App = () => {
   return (
     <div
       style={{
@@ -11,7 +10,7 @@ const App = (props) => {
         backgroundColor: "cyan",
       }}
     >
-      <h1 className="text-red-300">Cart!!</h1>
+      <h1 className="text-red-300">My Cart!!</h1>
     </div>
   );
 };
