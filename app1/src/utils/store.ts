@@ -1,37 +1,21 @@
-import React, { Suspense } from "react";
-// const RemoteApp = React.lazy(() => import("default_webpack_mf_second/App"));
-// const RemoteCart = React.lazy(() => import("mf_cart/App"));
-//
-import img from "./../assets/pexels-alanakatok-31556432.jpg";
-import img2 from "./../assets/pexels-alanakatok-31556434.jpg";
-import img3 from "./../assets/pexels-alanakatok-31556437.jpg";
-import img4 from "./../assets/pexels-alanakatok-31556438.jpg";
-import img5 from "./../assets/pexels-alanakatok-31556440.jpg";
-import img6 from "./../assets/pexels-alanakatok-31556443.jpg";
-import img7 from "./../assets/pexels-alanakatok-31556448.jpg";
-import img8 from "./../assets/pexels-alanakatok-31556452.jpg";
-import img9 from "./../assets/pexels-alanakatok-31556454.jpg";
-import img10 from "./../assets/pexels-alanakatok-31556460.jpg";
-import img11 from "./../assets/pexels-alanakatok-31556461.jpg";
-import img12 from "./../assets/pexels-dima-valkov-1186343-6211619.jpg";
-import img13 from "./../assets/pexels-dima-valkov-1186343-6211655.jpg";
-import img14 from "./../assets/pexels-dima-valkov-1186343-6211656.jpg";
-import img15 from "./../assets/pexels-dima-valkov-1186343-6211658.jpg";
-import img16 from "./../assets/pexels-dima-valkov-1186343-6402850.jpg";
-import img17 from "./../assets/pexels-dima-valkov-1186343-6503007.jpg";
-// import img18 from "./../assets/pexels-mart-production-8217375.jpg";
+import img2 from "./../../assets/pexels-alanakatok-31556434.jpg";
+import img3 from "./../../assets/pexels-alanakatok-31556437.jpg";
+import img4 from "./../../assets/pexels-alanakatok-31556438.jpg";
+import img5 from "./../../assets/pexels-alanakatok-31556440.jpg";
+import img6 from "./../../assets/pexels-alanakatok-31556443.jpg";
+import img7 from "./../../assets/pexels-alanakatok-31556448.jpg";
+import img8 from "./../../assets/pexels-alanakatok-31556452.jpg";
+import img9 from "./../../assets/pexels-alanakatok-31556454.jpg";
+import img10 from "./../../assets/pexels-alanakatok-31556460.jpg";
+import img11 from "./../../assets/pexels-alanakatok-31556461.jpg";
+import img12 from "./../../assets/pexels-dima-valkov-1186343-6211619.jpg";
+import img13 from "./../../assets/pexels-dima-valkov-1186343-6211655.jpg";
+import img14 from "./../../assets/pexels-dima-valkov-1186343-6211656.jpg";
+import img15 from "./../../assets/pexels-dima-valkov-1186343-6211658.jpg";
+import img16 from "./../../assets/pexels-dima-valkov-1186343-6402850.jpg";
+import img17 from "./../../assets/pexels-dima-valkov-1186343-6503007.jpg";
 
-const products = [
-  // {
-  //   photo: "pexels-alanakatok-31556432.jpg",
-  //   price: 89.99,
-  //   title: "Black Top & Pink Lace Skirt",
-  //   description:
-  //     "Elegant black sleeveless V-neck top paired with a blush pink lace midi skirt and gold belt",
-  //   imageAlt:
-  //     "Woman wearing a black sleeveless top and blush pink lace midi skirt with a gold belt and nude heels",
-  //   imageUrl: img,
-  // },
+export const products = [
   {
     photo: "pexels-alanakatok-31556434",
     price: 119.99,
@@ -112,16 +96,6 @@ const products = [
       "Woman posing in a blue and white floral open-shoulder ruffle blouse and high-waist flared jeans",
     imageUrl: img9,
   },
-  // {
-  //   photo: "pexels-alanakatok-31556460",
-  //   price: 149.99,
-  //   title: "Denim Jacket & Navy Flared Skirt",
-  //   description:
-  //     "Denim jacket worn over a floral blouse paired with a navy blue flared midi skirt and heels",
-  //   imageAlt:
-  //     "Woman wearing a denim jacket over a floral top with a navy blue flared midi skirt and nude heels, looking down",
-  //   imageUrl: img10,
-  // },
   {
     photo: "pexels-alanakatok-31556461",
     price: 144.99,
@@ -192,106 +166,4 @@ const products = [
       "Young woman in a white cropped tie-front t-shirt and khaki cargo jogger pants with colorful sneakers",
     imageUrl: img17,
   },
-  // {
-  //   photo: "pexels-mart-production-8217375.jpg",
-  //   price: 39.99,
-  //   title: "Classic White Oversized Tee",
-  //   description:
-  //     "Classic white oversized unisex crew-neck t-shirt, minimalist essential wardrobe staple",
-  //   imageAlt:
-  //     "Woman with curly hair wearing a plain white oversized crew-neck t-shirt and blue jeans against a soft pink background",
-  //   imageUrl: img18,
-  // },
 ];
-
-const App = () => {
-  return (
-    <div>
-      <header className="flex items-center h-20 justify-between p-4 bg-gray-800 text-white">
-        <div className="custom_container w-full flex items-center justify-between">
-          <h1>Logo</h1>
-          <nav>
-            <ul className="flex space-x-4">
-              <li>
-                <a href="/">Products</a>
-              </li>
-              <li>
-                <a href="/about" className="border-b-2">
-                  Carrinho
-                </a>
-              </li>
-              <li>
-                <a href="/" className="rounded-md bg-yellow-500 text-black p-3">
-                  Checkout
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </header>
-      <div className="custom_section custom_container">
-        <h2>Bem-vindo à nossa loja!</h2>
-        <p>Explore nossos produtos e adicione ao carrinho.</p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4_ gap-6 mt-6">
-          {products.map((product) => {
-            return (
-              <div key={product.photo} className="mb-3">
-                <a href={product.photo}>
-                  <figure className="mb-2">
-                    <img
-                      className="md:h-72 w-full object-cover rounded-md md:object-top"
-                      src={product.imageUrl}
-                      alt={product.imageAlt}
-                    />
-                  </figure>
-                  <h3 className="text-center font-semibold px-2 text-lg whitespace-nowrap overflow-hidden text-ellipsis">
-                    {product.title}
-                  </h3>
-
-                  <div className="flex justify-center gap-2 items-center">
-                    <p className="text-center text-gray-600">
-                      R${product.price}
-                    </p>
-                    <p className="text-center px-2_ line-through text-sm text-gray-400">
-                      R${product.price}
-                    </p>
-                  </div>
-                </a>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-      {/*<Suspense fallback={"loading..."}>
-        <RemoteApp />
-      </Suspense>
-      <Suspense fallback={"loading..."}>
-        <RemoteCart name="Sergio" />
-      </Suspense>*/}
-      <footer className="flex items-center h-20 justify-between p-4 bg-gray-800 text-white">
-        <div className="custom_container w-full flex items-center justify-between">
-          <h1>Logo</h1>
-          <nav>
-            <ul className="flex space-x-4">
-              <li>
-                <a href="/">Products</a>
-              </li>
-              <li>
-                <a href="/about" className="border-b-2">
-                  Carrinho
-                </a>
-              </li>
-              <li>
-                <a href="/" className="rounded-md bg-yellow-500 text-black p-3">
-                  Checkout
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </footer>
-    </div>
-  );
-};
-
-export default App;
