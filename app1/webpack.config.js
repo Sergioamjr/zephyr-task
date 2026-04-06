@@ -22,6 +22,10 @@ module.exports = withZephyr()({
   module: {
     rules: [
       {
+        test: /\.(png|jpe?g|gif)$/i,
+        type: "asset/resource",
+      },
+      {
         test: /\.jsx?$/,
         loader: "babel-loader",
         exclude: /node_modules/,

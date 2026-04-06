@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.custom_container {
+    @apply max-w-screen-lg m-auto px-4;
+}
+
+.custom_section {
+    @apply py-10 lg:py-14;
+}
