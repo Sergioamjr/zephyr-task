@@ -2,8 +2,8 @@
   "name": "mf-react-webpack",
   "version": "0.0.1",
   "scripts": {
-    "start": "concurrently \"pnpm --filter=./app2 start\" \"pnpm --filter=./app1 start\" \"pnpm --filter=./mf_cart start\"",
-    "build": "pnpm --filter=./app2 build && pnpm --filter=./app1 build"
+    "start": "concurrently \"pnpm --filter=./app1 start\" \"pnpm --filter=./app2 start\" \"pnpm --filter=./mf_cart start\"",
+    "build": "pnpm --filter=./app2 build && pnpm --filter=./app1 build && pnpm --filter=./mf_cart build"
   },
   "devDependencies": {
     "concurrently": "^9.2.1"

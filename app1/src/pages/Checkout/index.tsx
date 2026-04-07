@@ -3,7 +3,9 @@ import { Layout } from "../../components";
 import { useCallback } from "react";
 import { FaPlus, FaMinus, FaXmark } from "react-icons/fa6";
 import { useCart } from "../../hooks";
-// const RemoteCheckout = React.lazy(() => import("mf_cart/App"));
+const RemoteCheckout = React.lazy(
+  () => import("default_webpack_mf_second/App"),
+);
 
 function Checkoutt() {
   const { removeFromCart, products, clearCart, updateQuantity } = useCart();
@@ -34,6 +36,7 @@ function Checkoutt() {
   return (
     <>
       <p>Checkout</p>
+      <RemoteCheckout />
       {products.length === 0 ? (
         <p className="text-center font-extralight">
           Your cart is empty. Go to the producs page and select your products.
