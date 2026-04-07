@@ -1,14 +1,19 @@
 import { useCart } from "../../hooks";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const { getTotalItems } = useCart();
+  const { getTotalItems, products, clearCart } = useCart();
   const totalOfItems = getTotalItems();
+  console.log("header", {
+    products,
+    totalOfItems,
+  });
 
   return (
     <div>
       <header className="flex items-center h-20 justify-between p-4 bg-gray-800 text-white">
         <div className="custom_container w-full flex items-center justify-between">
           <h1>Logo</h1>
+          <button onClick={clearCart}>ddd</button>
           <nav>
             <ul className="flex space-x-4">
               <li>

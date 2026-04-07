@@ -66,7 +66,11 @@ export const useCart = create<ProductsState>()(
 
       return {
         products: [],
-        getTotalItems: () => get()?.products.length || 0,
+        getTotalItems: () =>
+          get()?.products.reduce(
+            (total, product) => total + product.quantity,
+            0,
+          ) || 0,
         addToCart: addToCartHandler,
         removeFromCart: removeFromCartHandler,
         updateQuantity: updateQuantityHandler,
