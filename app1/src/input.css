@@ -7,5 +7,9 @@
 }
 
 .custom_section {
-    @apply py-10 lg:py-14 md:min-h-[calc(100vh-160px)];
+    @apply py-10 lg:py-14 min-h-[calc(100vh-160px)];
+}
+
+.disabled_button {
+    @apply disabled:bg-gray-400 disabled:opacity-50 disabled:text-gray-500 disabled:cursor-not-allowed;
 }

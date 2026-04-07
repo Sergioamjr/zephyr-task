@@ -7,6 +7,7 @@ interface Order {
     id: string;
     products: Product[];
     total: number;
+    createdAt: Date;
 }
 interface OrderState {
     orders: Order[];

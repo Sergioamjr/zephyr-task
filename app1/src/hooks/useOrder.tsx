@@ -12,6 +12,7 @@ interface Order {
   id: string;
   products: Product[];
   total: number;
+  createdAt: Date;
 }
 
 interface OrderState {
@@ -30,6 +31,7 @@ const createStore = () =>
                 ...state.orders,
                 {
                   id: uuidv4(),
+                  createdAt: new Date(),
                   products: product,
                   total: product.reduce(
                     (acc, curr) => acc + curr.price * curr.quantity,

@@ -1,15 +1,17 @@
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useCart, useProducts, useOrder } from "default_webpack_mf_first/store";
 import { FaPlus, FaMinus, FaXmark } from "react-icons/fa6";
 import * as lottie from "lottie-web";
-import groovyWalkAnimation from "./assets/approvedPayment.json";
+import paid from "./assets/paid.json";
+import payment_process from "./assets/payment_process.json";
 
 export default function App() {
-  // return <p>dasda</p>;
-  const { createOrder, orders } = useOrder((state) => state);
+  const { createOrder } = useOrder((state) => state);
   const { removeFromCart, products, clearCart, updateQuantity } = useCart(
     (state) => state,
   );
+  const [isCreating, setIsCreating] = useState(false);
+  const [orderCreated, setOrderCreated] = useState(false);
 
   const increaseQuantityHandler = useCallback(
     (productId: string) => {
@@ -38,42 +40,86 @@ export default function App() {
 
   const { getById } = useProducts();
 
-  const triggerAnimation = useCallback(() => {
-    const el = document.getElementById("lottie");
-    if (el) {
-      const anim = lottie.default.loadAnimation({
-        container: el,
-        renderer: "svg",
-        loop: false,
-        autoplay: true,
-        animationData: groovyWalkAnimation,
-      });
-      setTimeout(() => {
-        anim.destroy();
-      }, 2000);
-    }
-  }, []);
+  const triggerAnimation = useCallback(
+    ({
+      id,
+      animation,
+      shouldDestroy,
+    }: {
+      id: string;
+      animation?: Record<any, any>;
+      shouldDestroy?: boolean;
+    }) => {
+      const el = document.getElementById(id);
+      if (el) {
+        const anim = lottie.default.loadAnimation({
+          container: el,
+          renderer: "svg",
+          loop: false,
+          autoplay: true,
+          animationData: animation,
+        });
+        if (shouldDestroy) {
+          setTimeout(() => {
+            anim.destroy();
+          }, 3000);
+        }
+      }
+    },
+    [],
+  );
 
   const onSubmitHandler = useCallback(() => {
-    triggerAnimation();
-
-    createOrder(
-      products.map((d) => ({
-        id: d.id,
-        price: d.price,
-        quantity: d.quantity,
-      })),
-    );
-  }, [triggerAnimation, products, createOrder]);
+    setIsCreating(true);
+    triggerAnimation({
+      id: "processing",
+      animation: payment_process,
+      shouldDestroy: true,
+    });
+    setTimeout(() => {
+      setIsCreating(false);
+      setOrderCreated(true);
+      clearCart();
+      createOrder(
+        products.map((d) => ({
+          id: d.id,
+          price: d.price,
+          quantity: d.quantity,
+        })),
+      );
+      setTimeout(() => {
+        triggerAnimation({
+          id: "paid",
+          animation: paid,
+        });
+      }, 0);
+    }, 3000);
+  }, [triggerAnimation, products, createOrder, setIsCreating]);
 
   return (
     <div>
       <>
-        {products.length === 0 ? (
+        {orderCreated && (
+          <div>
+            <p className="text-center font-bold text-green-500 text-lg mb-4_">
+              Order created successfully!
+            </p>
+            <p className="text-center font-bold_ text-green-500_ text-lg mb-4">
+              Go to the{" "}
+              <a className="border-b-blue-600 text-blue-600" href="/orders">
+                orders
+              </a>{" "}
+              page to see your order details.
+            </p>
+            <div id="paid" className="w-64 mx-auto" />
+          </div>
+        )}
+        {products.length === 0 && !orderCreated && (
           <p className="text-center font-extralight">
             Your cart is empty. Go to the producs page and select your products.
           </p>
-        ) : (
+        )}
+        {!!products.length && !orderCreated && (
           <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
             <div className="col-span-3 w-full">
               <table className="w-full">
@@ -114,8 +160,8 @@ export default function App() {
                           <td>
                             <div className="flex justify-around">
                               <button
-                                disabled={product?.quantity <= 1}
-                                className="disabled:opacity-50 disabled:cursor-not-allowed rounded-md bg-gray-300 h-6 w-6 flex items-center justify-center"
+                                disabled={product?.quantity <= 1 || isCreating}
+                                className="disabled:opacity-50 disabled_button disabled:cursor-not-allowed rounded-md bg-gray-300 h-6 w-6 flex items-center justify-center"
                                 onClick={() =>
                                   decreaseQuantityHandler(product.id!)
                                 }
@@ -124,7 +170,8 @@ export default function App() {
                               </button>
                               <p className="font-light">{product.quantity}</p>
                               <button
-                                className="rounded-md bg-gray-300 h-6 w-6 flex items-center justify-center"
+                                disabled={isCreating}
+                                className="rounded-md disabled_button bg-gray-300 h-6 w-6 flex items-center justify-center"
                                 onClick={() =>
                                   increaseQuantityHandler(product.id!)
                                 }
@@ -140,8 +187,9 @@ export default function App() {
                           </td>
                           <td>
                             <button
+                              disabled={isCreating}
                               onClick={() => removeFromCart(product.id!)}
-                              className="rounded-md bg-red-300 h-6 w-6 flex items-center justify-center"
+                              className="rounded-md disabled_button bg-red-300 h-6 w-6 flex items-center justify-center"
                             >
                               <FaXmark />
                             </button>
@@ -153,8 +201,9 @@ export default function App() {
               </table>
               <div className="flex justify-end">
                 <button
+                  disabled={isCreating}
                   onClick={clearCart}
-                  className="bg-red-500 text-white p-2 rounded-md w-auto mt-2 block"
+                  className="bg-red-500 disabled_button text-white p-2 rounded-md w-auto mt-2 block"
                 >
                   Clear Cart
                 </button>
@@ -177,12 +226,13 @@ export default function App() {
                 </p>
               </div>
               <button
+                disabled={isCreating}
                 onClick={onSubmitHandler}
                 className="mt-4 rounded-md bg-green-500 text-white p-3 w-full block relative"
               >
-                Pay
-                <div id="lottie" className="w-14 absolute" />
+                {isCreating ? "Processing..." : "Pay"}
               </button>
+              <div id="processing" className="w-52 m-auto" />
             </div>
           </div>
         )}

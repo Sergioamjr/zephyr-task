@@ -20,13 +20,34 @@ export default function App() {
         ) : (
           <div className="w-full">
             <div className="col-span-3 w-full">
-              {orders.map((order) => {
+              {orders.reverse().map((order) => {
+                console.log("order", order);
                 return (
                   <div
                     key={order.id}
                     className="border-b-[1px] last:border-b-0 pb-4 last:pb-0 pt-4"
                   >
-                    <h2 className="font-bold ">Order ID: {order.id}</h2>
+                    <div className="flex justify-between">
+                      <h2>
+                        <span className="font-bold">Order ID: </span>
+                        {order.id}
+                      </h2>
+                      {order.createdAt && (
+                        <p>
+                          <span className="font-bold">Created at: </span>
+                          {new Date(order.createdAt).toLocaleDateString(
+                            "en-US",
+                            {
+                              day: "2-digit",
+                              month: "2-digit",
+                              year: "2-digit",
+                              hour: "2-digit",
+                              minute: "2-digit",
+                            },
+                          )}
+                        </p>
+                      )}
+                    </div>
                     <ul>
                       {order.products
                         .map((p) => ({
@@ -59,8 +80,9 @@ export default function App() {
                           );
                         })}
                     </ul>
-                    <p className="font-bold text-right">
-                      Total: {formatMoney(order.total)}
+                    <p className="text-right">
+                      <span className="font-bold">Total: </span>
+                      {formatMoney(order.total)}
                     </p>
                   </div>
                 );

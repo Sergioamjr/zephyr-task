@@ -9,19 +9,11 @@ export default function Product() {
   const { addToCart, getIsInCart, removeFromCart } = useCart();
   const products = useProducts().getById(slug!);
 
-  console.log({
-    products,
-    slug,
-  });
-
   const addToCartHandler = useCallback(() => {
     if (products) {
       addToCart({
         id: products.id,
-        // title: products.title,
         price: products.price,
-        // imageUrl: products.imageUrl,
-        // imageAlt: products.imageAlt,
         quantity: 1,
       });
     }
@@ -74,20 +66,25 @@ export default function Product() {
                   Add to card
                 </button>
               ) : (
-                <div className="flex flex-row gap-2 mt-6 justify-between">
-                  <a
-                    href="/checkout"
-                    className="block rounded-md text-center bg-yellow-500 text-white p-3 w-full"
-                  >
-                    Go to Checkout
+                <>
+                  <div className="flex flex-row gap-2 mt-6 justify-between mb-9">
+                    <a
+                      href="/checkout"
+                      className="block rounded-md text-center bg-yellow-500 text-white p-3 w-full"
+                    >
+                      Go to Checkout
+                    </a>
+                    <button
+                      onClick={removeFromCartHandler}
+                      className="rounded-md bg-red-500 text-white p-3 w-12 flex items-center justify-center"
+                    >
+                      <FaRegTrashAlt />
+                    </button>
+                  </div>
+                  <a className="text-center text-blue-600" href="/">
+                    Continue buying...
                   </a>
-                  <button
-                    onClick={removeFromCartHandler}
-                    className="rounded-md bg-red-500 text-white p-3 w-12 flex items-center justify-center"
-                  >
-                    <FaRegTrashAlt />
-                  </button>
-                </div>
+                </>
               )}
             </div>
           </div>
