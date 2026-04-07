@@ -28,5 +28,8 @@ module.exports = {
     "lottie-web": {
       singleton: true,
     },
+    uuid: {
+      singleton: true,
+    },
   },
 };

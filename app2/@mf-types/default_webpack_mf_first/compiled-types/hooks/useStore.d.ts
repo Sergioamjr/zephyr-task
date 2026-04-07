@@ -1,6 +1,6 @@
 export declare const useProducts: () => {
     all: {
-        photo: string;
+        id: string;
         price: number;
         title: string;
         description: string;
@@ -8,7 +8,7 @@ export declare const useProducts: () => {
         imageUrl: string;
     }[];
     getById: (id: string) => {
-        photo: string;
+        id: string;
         price: number;
         title: string;
         description: string;

@@ -9,31 +9,36 @@ export default function Product() {
   const { addToCart, getIsInCart, removeFromCart } = useCart();
   const products = useProducts().getById(slug!);
 
+  console.log({
+    products,
+    slug,
+  });
+
   const addToCartHandler = useCallback(() => {
     if (products) {
       addToCart({
-        id: products.photo,
-        title: products.title,
+        id: products.id,
+        // title: products.title,
         price: products.price,
-        imageUrl: products.imageUrl,
-        imageAlt: products.imageAlt,
+        // imageUrl: products.imageUrl,
+        // imageAlt: products.imageAlt,
         quantity: 1,
       });
     }
   }, []);
 
-  const isInCart = getIsInCart(products?.photo || "");
+  const isInCart = getIsInCart(products?.id || "");
 
   const removeFromCartHandler = useCallback(() => {
     if (products) {
-      removeFromCart(products.photo);
+      removeFromCart(products.id);
     }
   }, []);
 
   if (!products) {
     return (
       <Layout>
-        <p>Produto não encontrado</p>
+        <p>Product not found.</p>
       </Layout>
     );
   }

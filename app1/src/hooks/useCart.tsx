@@ -3,11 +3,8 @@ import { persist, createJSONStorage } from "zustand/middleware";
 
 interface Product {
   id: string;
-  title: string;
   price: number;
   quantity: number;
-  imageUrl: string;
-  imageAlt: string;
 }
 
 interface ProductsState {

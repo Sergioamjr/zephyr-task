@@ -1,5 +1,5 @@
 export declare const products: {
-    photo: string;
+    id: string;
     price: number;
     title: string;
     description: string;
