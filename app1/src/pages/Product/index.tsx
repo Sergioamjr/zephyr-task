@@ -3,6 +3,7 @@ import { Layout } from "../../components";
 import { useParams } from "react-router-dom";
 import { useCallback } from "react";
 import { FaRegTrashAlt } from "react-icons/fa";
+import { formatMoney } from "../../utils";
 
 export default function Product() {
   const { slug } = useParams();
@@ -53,10 +54,7 @@ export default function Product() {
               <p className=" text-gray-600 mb-3">{products.description}</p>
               <p>Price:</p>
               <div className="flex items-center gap-2">
-                <p className=" text-gray-600">R${products.price}</p>
-                <p className=" px-2_ line-through text-sm text-gray-400">
-                  R${products.price}
-                </p>
+                <p className=" text-gray-600">{formatMoney(products.price)}</p>
               </div>
               {!isInCart ? (
                 <button

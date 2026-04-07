@@ -5,7 +5,8 @@ module.exports = {
     mf_order: "mf_order@http://localhost:3003/mf-manifest.json",
   },
   exposes: {
-    "./store": "./src/hooks",
+    "./hooks": "./src/hooks",
+    "./utils": "./src/utils",
   },
   shared: {
     react: {

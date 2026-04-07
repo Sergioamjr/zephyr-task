@@ -1,5 +1,6 @@
-import { useCallback, useEffect, useState } from "react";
-import { useCart, useProducts, useOrder } from "default_webpack_mf_first/store";
+import { useCallback, useState } from "react";
+import { useCart, useProducts, useOrder } from "default_webpack_mf_first/hooks";
+import { formatMoney } from "default_webpack_mf_first/utils";
 import { FaPlus, FaMinus, FaXmark } from "react-icons/fa6";
 import * as lottie from "lottie-web";
 import paid from "./assets/paid.json";
@@ -31,12 +32,6 @@ export default function App() {
     },
     [products, updateQuantity],
   );
-  const formatMoney = (value: number) => {
-    return value.toLocaleString("en-US", {
-      style: "currency",
-      currency: "USD",
-    });
-  };
 
   const { getById } = useProducts();
 

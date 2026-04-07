@@ -1,5 +1,6 @@
 import { useProducts } from "../../hooks/useStore";
 import { Layout } from "../../components";
+import { formatMoney } from "../../utils";
 
 export default function Home() {
   const products = useProducts().all;
@@ -25,10 +26,7 @@ export default function Home() {
 
                   <div className="flex justify-center gap-2 items-center">
                     <p className="text-center text-gray-600">
-                      R${product.price}
-                    </p>
-                    <p className="text-center px-2_ line-through text-sm text-gray-400">
-                      R${product.price}
+                      {formatMoney(product.price)}
                     </p>
                   </div>
                 </a>

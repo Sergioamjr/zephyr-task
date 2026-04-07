@@ -1,15 +1,10 @@
-import { useOrder, useProducts } from "default_webpack_mf_first/store";
+import { useOrder, useProducts } from "default_webpack_mf_first/hooks";
+import { formatMoney, formatDate } from "default_webpack_mf_first/utils";
 
 export default function App() {
   const orders = useOrder((state) => state.orders);
   const { getById } = useProducts();
 
-  const formatMoney = (value: number) => {
-    return value.toLocaleString("en-US", {
-      style: "currency",
-      currency: "USD",
-    });
-  };
   return (
     <div>
       <>
@@ -21,7 +16,6 @@ export default function App() {
           <div className="w-full">
             <div className="col-span-3 w-full">
               {orders.reverse().map((order) => {
-                console.log("order", order);
                 return (
                   <div
                     key={order.id}
@@ -35,16 +29,7 @@ export default function App() {
                       {order.createdAt && (
                         <p>
                           <span className="font-bold">Created at: </span>
-                          {new Date(order.createdAt).toLocaleDateString(
-                            "en-US",
-                            {
-                              day: "2-digit",
-                              month: "2-digit",
-                              year: "2-digit",
-                              hour: "2-digit",
-                              minute: "2-digit",
-                            },
-                          )}
+                          {formatDate(order.createdAt)}
                         </p>
                       )}
                     </div>
