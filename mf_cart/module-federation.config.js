@@ -20,6 +20,7 @@ module.exports = {
     },
     zustand: {
       singleton: true,
+      requiredVersion: "^5.0.12",
     },
     "react-icons": {
       singleton: true,

@@ -9,7 +9,6 @@ module.exports = {
       "default_webpack_mf_first@http://localhost:3001/remoteEntry.js",
   },
   shared: {
-    zustand: { singleton: true, strictVersion: true },
     react: {
       singleton: true,
     },
@@ -21,6 +20,7 @@ module.exports = {
     },
     zustand: {
       singleton: true,
+      requiredVersion: "^5.0.12",
     },
     "react-icons": {
       singleton: true,

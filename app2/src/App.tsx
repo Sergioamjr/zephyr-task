@@ -3,7 +3,9 @@ import { useCart } from "default_webpack_mf_first/store";
 import { FaPlus, FaMinus, FaXmark } from "react-icons/fa6";
 
 const App = () => {
-  const { removeFromCart, products, clearCart, updateQuantity } = useCart();
+  const { removeFromCart, products, clearCart, updateQuantity } = useCart(
+    (state) => state,
+  );
   const increaseQuantityHandler = useCallback(
     (productId: string) => {
       const product = products.find((p) => p.id === productId);
