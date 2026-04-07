@@ -25,5 +25,8 @@ module.exports = {
     "react-icons": {
       singleton: true,
     },
+    "lottie-web": {
+      singleton: true,
+    },
   },
 };

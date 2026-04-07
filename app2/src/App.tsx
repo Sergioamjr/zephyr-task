@@ -1,6 +1,8 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useCart } from "default_webpack_mf_first/store";
 import { FaPlus, FaMinus, FaXmark } from "react-icons/fa6";
+import * as lottie from "lottie-web";
+import groovyWalkAnimation from "./assets/approvedPayment.json";
 
 const App = () => {
   const { removeFromCart, products, clearCart, updateQuantity } = useCart(
@@ -30,8 +32,6 @@ const App = () => {
       currency: "USD",
     });
   };
-
-  console.log("all@@@", products);
 
   return (
     <div>
@@ -133,11 +133,27 @@ const App = () => {
                 </p>
               </div>
               <button
+                onClick={() => {
+                  const el = document.getElementById("lottie");
+                  if (el) {
+                    const anim = lottie.default.loadAnimation({
+                      container: el,
+                      renderer: "svg",
+                      loop: false,
+                      autoplay: true,
+                      animationData: groovyWalkAnimation,
+                    });
+                    setTimeout(() => {
+                      // anim.destroy();
+                    }, 2000);
+                  }
+                }}
                 className="
-    mt-4 rounded-md bg-green-500 text-white p-3 w-full block
+    mt-4 rounded-md bg-green-500 text-white p-3 w-full block relative
                   "
               >
                 Pay
+                <div id="lottie" className="w-11 absolute" />
               </button>
             </div>
           </div>

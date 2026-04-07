@@ -29,5 +29,8 @@ module.exports = {
     tailwindcss: {
       singleton: true,
     },
+    "lottie-web": {
+      singleton: true,
+    },
   },
 };

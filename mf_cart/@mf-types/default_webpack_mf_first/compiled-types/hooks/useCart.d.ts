@@ -9,7 +9,6 @@ interface Product {
 interface ProductsState {
     products: Product[];
     clearCart: () => void;
-    getTotalItems: () => number;
     addToCart: (product: Product) => void;
     removeFromCart: (productId: string) => void;
     updateQuantity: (productId: string, quantity: number) => void;
