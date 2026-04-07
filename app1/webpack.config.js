@@ -35,6 +35,9 @@ module.exports = withZephyr({
     port: 3001,
     historyApiFallback: true,
   },
+  watchOptions: {
+    ignored: ["./@mf-types/*", "./dist/*", "./node_modules/*"],
+  },
   output: {
     publicPath: "auto",
   },

@@ -1,11 +1,12 @@
 module.exports = {
-  name: "default_webpack_mf_first",
-  remotes: {
-    mf_checkout: "mf_checkout@http://localhost:3002/mf-manifest.json",
-    mf_order: "mf_order@http://localhost:3003/mf-manifest.json",
-  },
+  name: "mf_order",
+  filename: "remoteEntry.js",
   exposes: {
-    "./store": "./src/hooks",
+    "./App": "./src/App",
+  },
+  remotes: {
+    default_webpack_mf_first:
+      "default_webpack_mf_first@http://localhost:3001/remoteEntry.js",
   },
   shared: {
     react: {
@@ -22,9 +23,6 @@ module.exports = {
       requiredVersion: "^5.0.12",
     },
     "react-icons": {
-      singleton: true,
-    },
-    tailwindcss: {
       singleton: true,
     },
     "lottie-web": {

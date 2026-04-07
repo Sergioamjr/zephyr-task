@@ -32,14 +32,11 @@ module.exports = withZephyr({
       "Access-Control-Allow-Origin": "*",
     },
     static: path.join(__dirname, "dist"),
-    port: 3002,
+    port: 3003,
     hot: false,
   },
   output: {
     publicPath: "auto",
-  },
-  watchOptions: {
-    ignored: ["./@mf-types/*", "./dist/*", "./node_modules/*"],
   },
   module: {
     rules: [
@@ -62,8 +59,11 @@ module.exports = withZephyr({
       },
     ],
   },
+  watchOptions: {
+    ignored: ["./@mf-types/*", "./dist/*", "./node_modules/*"],
+  },
   resolve: {
-    extensions: [".tsx", ".ts", ".js"], // Allows omitting extensions in imports
+    extensions: [".tsx", ".ts", ".js"],
   },
   devtool: "inline-source-map",
   plugins: [

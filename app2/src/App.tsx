@@ -1,14 +1,16 @@
 import { useCallback } from "react";
-import { useCart, useProducts } from "default_webpack_mf_first/store";
+import { useCart, useProducts, useOrder } from "default_webpack_mf_first/store";
 import { FaPlus, FaMinus, FaXmark } from "react-icons/fa6";
 import * as lottie from "lottie-web";
 import groovyWalkAnimation from "./assets/approvedPayment.json";
 
 export default function App() {
   // return <p>dasda</p>;
+  const { createOrder, orders } = useOrder((state) => state);
   const { removeFromCart, products, clearCart, updateQuantity } = useCart(
     (state) => state,
   );
+
   const increaseQuantityHandler = useCallback(
     (productId: string) => {
       const product = products.find((p) => p.id === productId);
@@ -35,6 +37,34 @@ export default function App() {
   };
 
   const { getById } = useProducts();
+
+  const triggerAnimation = useCallback(() => {
+    const el = document.getElementById("lottie");
+    if (el) {
+      const anim = lottie.default.loadAnimation({
+        container: el,
+        renderer: "svg",
+        loop: false,
+        autoplay: true,
+        animationData: groovyWalkAnimation,
+      });
+      setTimeout(() => {
+        anim.destroy();
+      }, 2000);
+    }
+  }, []);
+
+  const onSubmitHandler = useCallback(() => {
+    triggerAnimation();
+
+    createOrder(
+      products.map((d) => ({
+        id: d.id,
+        price: d.price,
+        quantity: d.quantity,
+      })),
+    );
+  }, [triggerAnimation, products, createOrder]);
 
   return (
     <div>
@@ -147,24 +177,8 @@ export default function App() {
                 </p>
               </div>
               <button
-                onClick={() => {
-                  const el = document.getElementById("lottie");
-                  if (el) {
-                    const anim = lottie.default.loadAnimation({
-                      container: el,
-                      renderer: "svg",
-                      loop: false,
-                      autoplay: true,
-                      animationData: groovyWalkAnimation,
-                    });
-                    setTimeout(() => {
-                      // anim.destroy();
-                    }, 2000);
-                  }
-                }}
-                className="
-    mt-4 rounded-md bg-green-500 text-white p-3 w-full block relative
-                  "
+                onClick={onSubmitHandler}
+                className="mt-4 rounded-md bg-green-500 text-white p-3 w-full block relative"
               >
                 Pay
                 <div id="lottie" className="w-14 absolute" />

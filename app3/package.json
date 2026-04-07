@@ -1,5 +1,5 @@
 {
-  "name": "default_webpack_mf_first",
+  "name": "mf_order",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@module-federation/enhanced": "^0.21.2",
-    "@tailwindcss/postcss": "^4.2.2",
+    "lottie-react": "^2.4.1",
     "lottie-web": "^5.13.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
@@ -37,9 +37,5 @@
     "webpack": "^5.102.1",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.2"
-  },
-  "zephyr:dependencies": {
-    "mf_checkout": "workspace:*",
-    "mf_order": "workspace:*"
   }
 }

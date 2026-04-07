@@ -12,11 +12,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <header className="flex items-center h-20 justify-between p-4 bg-gray-800 text-white">
         <div className="custom_container w-full flex items-center justify-between">
           <h1>Logo</h1>
-          {/*<button onClick={clearCart}>ddd</button>*/}
           <nav>
             <ul className="flex space-x-4">
               <li>
                 <a href="/">Products</a>
+              </li>
+              <li>
+                <a href="/orders">Orders</a>
               </li>
               {totalOfItems > 0 && (
                 <li>
@@ -43,9 +45,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <a href="/">Products</a>
               </li>
               <li>
-                <a href="/about" className="border-b-2">
-                  Carrinho
-                </a>
+                <a href="/orders">Orders</a>
               </li>
               <li>
                 <a href="/" className="rounded-md bg-yellow-500 text-black p-3">

@@ -16,29 +16,23 @@ interface Order {
 
 interface OrderState {
   orders: Order[];
-  createOrder: (product: Order[]) => void;
+  createOrder: (product: Product[]) => void;
 }
 
 const createStore = () =>
   create<OrderState>()(
     persist(
       (set) => {
-        const createOrderHandler = (product: Order[]) => {
+        const createOrderHandler = (product: Product[]) => {
           set((state) => {
             return {
               orders: [
                 ...state.orders,
                 {
                   id: uuidv4(),
-                  products: product.flatMap((p) => p.products),
+                  products: product,
                   total: product.reduce(
-                    (acc, curr) =>
-                      acc +
-                      curr.products.reduce(
-                        (prodAcc, prodCurr) =>
-                          prodAcc + prodCurr.price * prodCurr.quantity,
-                        0,
-                      ),
+                    (acc, curr) => acc + curr.price * curr.quantity,
                     0,
                   ),
                 },
