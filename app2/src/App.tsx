@@ -1,10 +1,10 @@
-import React, { useCallback, useEffect } from "react";
+import { useCallback } from "react";
 import { useCart } from "default_webpack_mf_first/store";
 import { FaPlus, FaMinus, FaXmark } from "react-icons/fa6";
 import * as lottie from "lottie-web";
 import groovyWalkAnimation from "./assets/approvedPayment.json";
 
-const App = () => {
+export default function App() {
   const { removeFromCart, products, clearCart, updateQuantity } = useCart(
     (state) => state,
   );
@@ -161,6 +161,4 @@ const App = () => {
       </>
     </div>
   );
-};
-
-export default App;
+}

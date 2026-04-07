@@ -1,5 +1,5 @@
 module.exports = {
-  name: "default_webpack_mf_second",
+  name: "mf_checkout",
   filename: "remoteEntry.js",
   exposes: {
     "./App": "./src/App",
