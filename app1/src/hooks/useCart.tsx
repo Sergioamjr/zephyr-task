@@ -3,13 +3,16 @@ import { persist, createJSONStorage } from "zustand/middleware";
 
 interface Product {
   id: string;
-  name: string;
+  title: string;
   price: number;
   quantity: number;
+  imageUrl: string;
+  imageAlt: string;
 }
 
 interface ProductsState {
   products: Product[];
+  clearCart: () => void;
   getTotalItems: () => number;
   addToCart: (product: Product) => void;
   removeFromCart: (productId: string) => void;
@@ -57,6 +60,10 @@ export const useCart = create<ProductsState>()(
         return !!product;
       };
 
+      const clearCartHandler = () => {
+        set({ products: [] });
+      };
+
       return {
         products: [],
         getTotalItems: () => get()?.products.length || 0,
@@ -64,6 +71,7 @@ export const useCart = create<ProductsState>()(
         removeFromCart: removeFromCartHandler,
         updateQuantity: updateQuantityHandler,
         getIsInCart: getIsInCartHandler,
+        clearCart: clearCartHandler,
       };
     },
     {

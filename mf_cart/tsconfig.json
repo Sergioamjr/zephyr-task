@@ -3,12 +3,13 @@
     "outDir": "./dist/",
     "sourceMap": true,
     "module": "esnext",
-    // "target": "es5",
-    // "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "jsx": "react-jsx",
     "rootDir": "./src",
     "esModuleInterop": true,
+    "paths": {
+      "*": ["./@mf-types/*"],
+    },
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "./@mf-types/**/*"],
 }

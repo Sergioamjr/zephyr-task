@@ -1,6 +1,9 @@
 import React from "react";
+import { useCart } from "default_webpack_mf_first/store";
 
 const App = () => {
+  const all = useCart();
+  console.log("all", all);
   return (
     <div
       style={{

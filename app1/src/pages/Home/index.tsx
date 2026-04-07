@@ -7,7 +7,6 @@ export default function Home() {
     <Layout>
       <>
         <h2>Bem-vindo à nossa loja!</h2>
-        <p>Explore nossos produtos e adicione ao carrinho.</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4_ gap-6 mt-6">
           {products.map((product) => {
             return (

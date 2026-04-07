@@ -2,6 +2,7 @@ import { useProducts, useCart } from "../../hooks";
 import { Layout } from "../../components";
 import { useParams } from "react-router-dom";
 import { useCallback } from "react";
+import { FaRegTrashAlt } from "react-icons/fa";
 
 export default function Product() {
   const { slug } = useParams();
@@ -12,8 +13,10 @@ export default function Product() {
     if (products) {
       addToCart({
         id: products.photo,
-        name: products.title,
+        title: products.title,
         price: products.price,
+        imageUrl: products.imageUrl,
+        imageAlt: products.imageAlt,
         quantity: 1,
       });
     }
@@ -61,17 +64,25 @@ export default function Product() {
               {!isInCart ? (
                 <button
                   onClick={addToCartHandler}
-                  className="mt-6 rounded-md bg-yellow-500 text-black p-3 w-full"
+                  className="mt-6 rounded-md bg-yellow-500 text-white p-3 w-full"
                 >
                   Add to card
                 </button>
               ) : (
-                <button
-                  onClick={removeFromCartHandler}
-                  className="mt-6 rounded-md bg-red-500  text-white p-3 w-full"
-                >
-                  Remove from cart
-                </button>
+                <div className="flex flex-row gap-2 mt-6 justify-between">
+                  <a
+                    href="/checkout"
+                    className="block rounded-md text-center bg-yellow-500 text-white p-3 w-full"
+                  >
+                    Go to Checkout
+                  </a>
+                  <button
+                    onClick={removeFromCartHandler}
+                    className="rounded-md bg-red-500 text-white p-3 w-12 flex items-center justify-center"
+                  >
+                    <FaRegTrashAlt />
+                  </button>
+                </div>
               )}
             </div>
           </div>

@@ -17,7 +17,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               {totalOfItems > 0 && (
                 <li>
                   <a
-                    href="/"
+                    href="/checkout"
                     className="rounded-md bg-yellow-500 text-black p-3"
                   >
                     Checkout ({totalOfItems})
@@ -30,7 +30,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </header>
       <div className="custom_section custom_container">{children}</div>
 
-      <footer className="flex items-center h-20 justify-between p-4 bg-gray-800 text-white">
+      <footer className=" bottom-0 w-full flex items-center h-20 justify-between p-4 bg-gray-800 text-white">
         <div className="custom_container w-full flex items-center justify-between">
           <h1>Logo</h1>
           <nav>

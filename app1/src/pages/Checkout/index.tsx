@@ -1,8 +1,11 @@
-import { useCart } from "default_webpack_mf_first/store";
+import React, { Suspense } from "react";
+import { Layout } from "../../components";
 import { useCallback } from "react";
 import { FaPlus, FaMinus, FaXmark } from "react-icons/fa6";
+import { useCart } from "../../hooks";
+// const RemoteCheckout = React.lazy(() => import("mf_cart/App"));
 
-export default function Checkout() {
+function Checkoutt() {
   const { removeFromCart, products, clearCart, updateQuantity } = useCart();
   const increaseQuantityHandler = useCallback(
     (productId: string) => {
@@ -52,7 +55,7 @@ export default function Checkout() {
                 {products.map((product) => (
                   <tr
                     key={product.id}
-                    className="border-b-[1px] last:border-b-0 pb-2 last:pb-0 bg-red-500"
+                    className="border-b-[1px] last:border-b-0 pb-2 last:pb-0 "
                   >
                     <td className="">
                       <div className="flex gap-2 items-center">
@@ -136,5 +139,16 @@ export default function Checkout() {
         </div>
       )}
     </>
+  );
+}
+
+export default function Checkout() {
+  return (
+    <Layout>
+      <>
+        <p>Checkout</p>
+        <Checkoutt />
+      </>
+    </Layout>
   );
 }
