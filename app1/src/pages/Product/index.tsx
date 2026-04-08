@@ -49,7 +49,12 @@ export default function Product() {
           </figure>
           <div>
             <div className="sticky top-3">
-              <h3 className=" font-semibold text-lg mb-3">{products.title}</h3>
+              <h3
+                data-testid="prod-title"
+                className=" font-semibold text-lg mb-3"
+              >
+                {products.title}
+              </h3>
               <p>Description:</p>
               <p className=" text-gray-600 mb-3">{products.description}</p>
               <p>Price:</p>

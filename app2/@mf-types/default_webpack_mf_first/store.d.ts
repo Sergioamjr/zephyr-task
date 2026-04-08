@@ -1,2 +1,2 @@
-export * from './compiled-types/hooks/index';
-export { default } from './compiled-types/hooks/index';
+export * from './compiled-types/store/index';
+export { default } from './compiled-types/store/index';

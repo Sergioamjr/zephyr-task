@@ -7,12 +7,16 @@ export default function Home() {
   return (
     <Layout>
       <>
-        <h2>Bem-vindo à nossa loja!</h2>
+        <h2 data-testid="tittlee">Bem-vindo à nossa loja!!!</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4_ gap-6 mt-6">
-          {products.map((product) => {
+          {products.reverse().map((product) => {
             return (
               <div key={product.id} className="mb-3">
-                <a href={product.id}>
+                <a
+                  href={product.id}
+                  data-testid={`product-${product.id}`}
+                  className="block"
+                >
                   <figure className="mb-2">
                     <img
                       className="md:h-72 w-full object-cover rounded-md md:object-top"
