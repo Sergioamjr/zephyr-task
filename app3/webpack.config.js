@@ -61,6 +61,7 @@ module.exports = withZephyr({
   },
   watchOptions: {
     ignored: ["./@mf-types/*", "./dist/*", "./node_modules/*"],
+    followSymlinks: false,
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"],

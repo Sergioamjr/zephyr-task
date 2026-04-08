@@ -40,6 +40,7 @@ module.exports = withZephyr({
   },
   watchOptions: {
     ignored: ["./@mf-types/*", "./dist/*", "./node_modules/*"],
+    followSymlinks: false,
   },
   module: {
     rules: [
