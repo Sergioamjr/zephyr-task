@@ -1,5 +1,8 @@
 module.exports = {
   name: "default_webpack_mf_first",
+  dts: {
+    consumeTypes: false,
+  },
   remotes: {
     mf_checkout: "mf_checkout@http://localhost:3002/mf-manifest.json",
     mf_order: "mf_order@http://localhost:3003/mf-manifest.json",
