@@ -7,8 +7,10 @@ export default function Home() {
   return (
     <Layout>
       <>
-        <h2 data-testid="tittlee">Bem-vindo à nossa loja!!!</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4_ gap-6 mt-6">
+        <h2 data-testid="page-title" className="page_title">
+          Our Products
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6 first-of-type:mt-0">
           {products.reverse().map((product) => {
             return (
               <div key={product.id} className="mb-3">

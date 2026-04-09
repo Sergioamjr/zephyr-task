@@ -6,7 +6,7 @@ export default function Orders() {
   return (
     <Layout>
       <>
-        <p>Orders</p>
+        <h2 className="page_title">Orders</h2>
         <Suspense fallback={<p>Loading...</p>}>
           <RemoteOrder />
         </Suspense>

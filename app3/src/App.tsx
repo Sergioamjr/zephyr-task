@@ -23,12 +23,16 @@ export default function App() {
                   >
                     <div className="flex justify-between">
                       <h2>
-                        <span className="font-bold">Order ID: </span>
+                        <span className="font-bold main_font text-sm">
+                          Order ID:{" "}
+                        </span>
                         {order.id}
                       </h2>
                       {order.createdAt && (
                         <p>
-                          <span className="font-bold">Created at: </span>
+                          <span className="font-bold main_font text-sm">
+                            Created at:{" "}
+                          </span>
                           {formatDate(order.createdAt)}
                         </p>
                       )}
@@ -66,7 +70,9 @@ export default function App() {
                         })}
                     </ul>
                     <p className="text-right">
-                      <span className="font-bold">Total: </span>
+                      <span className="font-bold main_font text-sm">
+                        Total:{" "}
+                      </span>
                       {formatMoney(order.total)}
                     </p>
                   </div>

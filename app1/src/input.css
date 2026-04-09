@@ -13,3 +13,11 @@
 .disabled_button {
     @apply disabled:bg-gray-400 disabled:opacity-50 disabled:text-gray-500 disabled:cursor-not-allowed;
 }
+
+.main_font {
+    @apply font-mono;
+}
+
+.page_title {
+    @apply main_font text-lg border-b inline-block mb-8;
+}

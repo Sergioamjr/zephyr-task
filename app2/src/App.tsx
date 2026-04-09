@@ -119,7 +119,7 @@ export default function App() {
             <div className="col-span-3 w-full">
               <table className="w-full">
                 <thead>
-                  <tr>
+                  <tr className="main_font text-sm">
                     <th>Product</th>
                     <th>Price</th>
                     <th>Quantity</th>
@@ -155,6 +155,7 @@ export default function App() {
                           <td>
                             <div className="flex justify-around">
                               <button
+                                aria-label={`Decrease quantity of ${product?.title} in cart`}
                                 disabled={product?.quantity <= 1 || isCreating}
                                 className="disabled:opacity-50 disabled_button disabled:cursor-not-allowed rounded-md bg-gray-300 h-6 w-6 flex items-center justify-center"
                                 onClick={() =>
@@ -165,6 +166,7 @@ export default function App() {
                               </button>
                               <p className="font-light">{product.quantity}</p>
                               <button
+                                aria-label={`Increase quantity of ${product?.title} in cart`}
                                 disabled={isCreating}
                                 className="rounded-md disabled_button bg-gray-300 h-6 w-6 flex items-center justify-center"
                                 onClick={() =>
@@ -182,6 +184,7 @@ export default function App() {
                           </td>
                           <td>
                             <button
+                              aria-label={`Remove ${product?.title} from cart`}
                               disabled={isCreating}
                               onClick={() => removeFromCart(product.id!)}
                               className="rounded-md disabled_button bg-red-300 h-6 w-6 flex items-center justify-center"
@@ -209,11 +212,15 @@ export default function App() {
                 Order Summary
               </h2>
               <div className="flex justify-between">
-                <p className="md:text-right font-bold">Total Items:</p>
+                <p className="md:text-right font-bold main_font text-sm">
+                  Total Items:
+                </p>
                 <p>{products.reduce((sum, p) => sum + p.quantity, 0)}</p>
               </div>
               <div className="flex justify-between">
-                <p className="md:text-right font-bold">Total Price:</p>
+                <p className="md:text-right font-bold main_font text-sm">
+                  Total Price:
+                </p>
                 <p className="md:text-right ">
                   {formatMoney(
                     products.reduce((sum, p) => sum + p.price * p.quantity, 0),
