@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack serve",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "start:dev": "webpack serve --config webpack.dev.js"
   },
   "dependencies": {
     "@module-federation/enhanced": "^0.21.2",
