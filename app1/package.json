@@ -40,7 +40,7 @@
     "webpack-dev-server": "^5.2.2"
   },
   "zephyr:dependencies": {
-    "mf_checkout": "workspace:*",
-    "mf_order": "workspace:*"
+    "mf_checkout": "mf_checkout@*",
+    "mf_order": "mf_order@*"
   }
 }

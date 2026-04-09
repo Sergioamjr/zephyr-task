@@ -20,6 +20,9 @@
     "zephyr-webpack-plugin": "latest",
     "zustand": "^5.0.12"
   },
+  "zephyr:dependencies": {
+    "default_webpack_mf_first": "default_webpack_mf_first@*"
+  },
   "devDependencies": {
     "@babel/core": "^7.28.5",
     "@babel/preset-react": "^7.28.5",
