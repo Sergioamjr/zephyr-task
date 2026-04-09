@@ -113,11 +113,15 @@ export default function App() {
               </a>{" "}
               page to see your order details.
             </p>
-            <div id="paid" className="w-64 mx-auto" />
+            <div
+              data-testid="paid-animation"
+              id="paid"
+              className="w-64 mx-auto"
+            />
           </div>
         )}
         {products.length === 0 && !orderCreated && (
-          <p className="text-center font-extralight">
+          <p data-testid="empty-cart" className="text-center font-extralight">
             Your cart is empty. Go to the producs page and select your products.
           </p>
         )}
@@ -234,7 +238,7 @@ export default function App() {
                 <p className="md:text-right font-bold main_font text-sm">
                   Total Price:
                 </p>
-                <p className="md:text-right" test-id="total_price">
+                <p className="md:text-right" data-testid="total_price">
                   {formatMoney(
                     products.reduce((sum, p) => sum + p.price * p.quantity, 0),
                   )}
@@ -248,7 +252,11 @@ export default function App() {
               >
                 {isCreating ? "Processing..." : "Pay"}
               </button>
-              <div id="processing" className="w-52 m-auto" />
+              <div
+                data-testid="processing-animation"
+                id="processing"
+                className="w-52 m-auto"
+              />
             </div>
           </div>
         )}

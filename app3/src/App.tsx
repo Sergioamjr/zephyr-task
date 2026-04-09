@@ -22,7 +22,7 @@ export default function App() {
                     className="border-b-[1px] last:border-b-0 pb-4 last:pb-0 pt-4"
                   >
                     <div className="flex justify-between">
-                      <h2>
+                      <h2 data-testid={`order-id-${order.id}`}>
                         <span className="font-bold main_font text-sm">
                           Order ID:{" "}
                         </span>
@@ -47,6 +47,7 @@ export default function App() {
                           if (!product) return null;
                           return (
                             <li
+                              data-testid={`order-${order.id}-product-${product.id}`}
                               key={product.id}
                               className="flex gap-2 items-center"
                             >

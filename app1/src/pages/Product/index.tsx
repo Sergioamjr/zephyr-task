@@ -42,7 +42,9 @@ export default function Product() {
   return (
     <Layout>
       <>
-        <h2 className="page_title">Product &gt; {products.title}</h2>
+        <h2 className="page_title" data-testid="page_title">
+          Product &gt; {products.title}
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <figure>
             <img

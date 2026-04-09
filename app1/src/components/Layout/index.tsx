@@ -13,21 +13,26 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <header className="flex items-center h-20 justify-between bg-gray-800 text-white">
         <div className="custom_container w-full flex items-center justify-between">
           <h1 className="font-mono text-xl">
-            <a href="/">Zephyr Store</a>
+            <a href="/" data-testid="home-link">
+              Zephyr Store
+            </a>
           </h1>
           <nav>
             <ul className="flex space-x-4">
               <li>
-                <a href="/">Products</a>
+                <a data-testid="products-link" href="/">
+                  Products
+                </a>
               </li>
               <li>
-                <a href="/orders">
+                <a data-testid="orders-link" href="/orders">
                   Orders {!!orders.length && <span>({orders.length})</span>}
                 </a>
               </li>
 
               <li>
                 <a
+                  data-testid="checkout-link"
                   href="/checkout"
                   className="rounded-md bg-yellow-500 text-black p-3"
                 >
