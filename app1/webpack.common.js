@@ -1,30 +1,11 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { withZephyr } = require("zephyr-webpack-plugin");
 const {
   ModuleFederationPlugin,
 } = require("@module-federation/enhanced/webpack");
 const path = require("path");
 const mfConfig = require("./module-federation.config");
 
-module.exports = withZephyr({
-  hooks: {
-    onDeployComplete: async (deploymentInfo) => {
-      console.log("🚀 Deployment Complete!");
-      console.log(`   URL: ${deploymentInfo.url}`);
-      console.log(`   Module: ${deploymentInfo.snapshot.uid.app_name}`);
-      console.log(`   Build ID: ${deploymentInfo.snapshot.uid.build}`);
-      console.log(
-        `   Dependencies: ${deploymentInfo.federatedDependencies.length}`,
-      );
-      console.log(
-        `   Git: ${deploymentInfo.snapshot.git.branch}@${deploymentInfo.snapshot.git.commit}`,
-      );
-      console.log(
-        `   CI: ${deploymentInfo.buildStats.context.isCI ? "Yes" : "No"}`,
-      );
-    },
-  },
-})({
+module.exports = {
   entry: "./src/index",
   mode: "development",
   devServer: {
@@ -32,14 +13,22 @@ module.exports = withZephyr({
       "Access-Control-Allow-Origin": "*",
     },
     static: path.join(__dirname, "dist"),
-    port: 3003,
-    hot: false,
+    port: 3001,
+    historyApiFallback: true,
+  },
+  watchOptions: {
+    ignored: ["./@mf-types/*", "./dist/*", "./node_modules/*"],
+    followSymlinks: false,
   },
   output: {
     publicPath: "auto",
   },
   module: {
     rules: [
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        type: "asset/resource",
+      },
       {
         test: /\.jsx?$/,
         loader: "babel-loader",
@@ -59,12 +48,8 @@ module.exports = withZephyr({
       },
     ],
   },
-  watchOptions: {
-    ignored: ["./@mf-types/*", "./dist/*", "./node_modules/*"],
-    followSymlinks: false,
-  },
   resolve: {
-    extensions: [".tsx", ".ts", ".js"],
+    extensions: [".tsx", ".ts", ".js"], // Allows omitting extensions in imports
   },
   devtool: "inline-source-map",
   plugins: [
@@ -73,4 +58,4 @@ module.exports = withZephyr({
       template: "./public/index.html",
     }),
   ],
-});
+};

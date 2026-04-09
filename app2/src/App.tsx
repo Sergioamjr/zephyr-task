@@ -96,12 +96,19 @@ export default function App() {
       <>
         {orderCreated && (
           <div>
-            <p className="text-center font-bold text-green-500 text-lg mb-4_">
+            <p
+              data-testid="order-created"
+              className="text-center font-bold text-green-500 text-lg mb-4_"
+            >
               Order created successfully!
             </p>
             <p className="text-center font-bold_ text-green-500_ text-lg mb-4">
               Go to the{" "}
-              <a className="border-b-blue-600 text-blue-600" href="/orders">
+              <a
+                data-testid="go-to-orders-btn"
+                className="border-b-blue-600 text-blue-600"
+                href="/orders"
+              >
                 orders
               </a>{" "}
               page to see your order details.
@@ -119,7 +126,7 @@ export default function App() {
             <div className="col-span-3 w-full">
               <table className="w-full">
                 <thead>
-                  <tr>
+                  <tr className="main_font text-sm">
                     <th>Product</th>
                     <th>Price</th>
                     <th>Quantity</th>
@@ -155,6 +162,8 @@ export default function App() {
                           <td>
                             <div className="flex justify-around">
                               <button
+                                data-testid={`decrease-quantity-${product?.id}`}
+                                aria-label={`Decrease quantity of ${product?.title} in cart`}
                                 disabled={product?.quantity <= 1 || isCreating}
                                 className="disabled:opacity-50 disabled_button disabled:cursor-not-allowed rounded-md bg-gray-300 h-6 w-6 flex items-center justify-center"
                                 onClick={() =>
@@ -165,6 +174,8 @@ export default function App() {
                               </button>
                               <p className="font-light">{product.quantity}</p>
                               <button
+                                data-testid={`increase-quantity-${product?.id}`}
+                                aria-label={`Increase quantity of ${product?.title} in cart`}
                                 disabled={isCreating}
                                 className="rounded-md disabled_button bg-gray-300 h-6 w-6 flex items-center justify-center"
                                 onClick={() =>
@@ -182,6 +193,8 @@ export default function App() {
                           </td>
                           <td>
                             <button
+                              data-testid={`remove-from-cart-${product?.id}`}
+                              aria-label={`Remove ${product?.title} from cart`}
                               disabled={isCreating}
                               onClick={() => removeFromCart(product.id!)}
                               className="rounded-md disabled_button bg-red-300 h-6 w-6 flex items-center justify-center"
@@ -198,6 +211,7 @@ export default function App() {
                 <button
                   disabled={isCreating}
                   onClick={clearCart}
+                  data-testid="clear-cart-btn"
                   className="bg-red-500 disabled_button text-white p-2 rounded-md w-auto mt-2 block"
                 >
                   Clear Cart
@@ -205,16 +219,22 @@ export default function App() {
               </div>
             </div>
             <div>
-              <h2 className="text-xl font-semibold mb-4 md:text-right">
+              <h3 className="text-xl font-semibold mb-4 md:text-right">
                 Order Summary
-              </h2>
+              </h3>
               <div className="flex justify-between">
-                <p className="md:text-right font-bold">Total Items:</p>
-                <p>{products.reduce((sum, p) => sum + p.quantity, 0)}</p>
+                <p className="md:text-right font-bold main_font text-sm">
+                  Total Items:
+                </p>
+                <p data-testid="total_quantity">
+                  {products.reduce((sum, p) => sum + p.quantity, 0)}
+                </p>
               </div>
               <div className="flex justify-between">
-                <p className="md:text-right font-bold">Total Price:</p>
-                <p className="md:text-right ">
+                <p className="md:text-right font-bold main_font text-sm">
+                  Total Price:
+                </p>
+                <p className="md:text-right" test-id="total_price">
                   {formatMoney(
                     products.reduce((sum, p) => sum + p.price * p.quantity, 0),
                   )}
@@ -222,6 +242,7 @@ export default function App() {
               </div>
               <button
                 disabled={isCreating}
+                data-testid="pay-btn"
                 onClick={onSubmitHandler}
                 className="mt-4 rounded-md bg-green-500 text-white p-3 w-full block relative"
               >

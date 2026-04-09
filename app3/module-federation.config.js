@@ -1,5 +1,8 @@
 module.exports = {
   name: "mf_order",
+  dts: {
+    generateTypes: false,
+  },
   filename: "remoteEntry.js",
   exposes: {
     "./App": "./src/App",
