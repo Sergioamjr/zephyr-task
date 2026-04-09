@@ -7,7 +7,6 @@ const mfConfig = require("./module-federation.config");
 
 module.exports = {
   entry: "./src/index",
-  mode: "development",
   devServer: {
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -45,9 +44,8 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js"], // Allows omitting extensions in imports
+    extensions: [".tsx", ".ts", ".js"],
   },
-  devtool: "inline-source-map",
   plugins: [
     new ModuleFederationPlugin(mfConfig),
     new HtmlWebpackPlugin({

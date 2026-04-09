@@ -1,10 +1,6 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { withZephyr } = require("zephyr-webpack-plugin");
-const {
-  ModuleFederationPlugin,
-} = require("@module-federation/enhanced/webpack");
-const path = require("path");
-const mfConfig = require("./module-federation.config");
+const { merge } = require("webpack-merge");
+const common = require("./webpack.common.js");
 
 module.exports = withZephyr({
   hooks: {
@@ -24,53 +20,13 @@ module.exports = withZephyr({
       );
     },
   },
-})({
-  entry: "./src/index",
-  mode: "development",
-  devServer: {
-    headers: {
-      "Access-Control-Allow-Origin": "*",
+})(
+  merge(common, {
+    mode: "production",
+    performance: {
+      hints: false,
+      maxEntrypointSize: 512000,
+      maxAssetSize: 512000,
     },
-    static: path.join(__dirname, "dist"),
-    port: 3003,
-    hot: false,
-  },
-  output: {
-    publicPath: "auto",
-  },
-  module: {
-    rules: [
-      {
-        test: /\.jsx?$/,
-        loader: "babel-loader",
-        exclude: /node_modules/,
-        options: {
-          presets: ["@babel/preset-react"],
-        },
-      },
-      {
-        test: /\.css$/i,
-        use: ["style-loader", "css-loader", "postcss-loader"],
-      },
-      {
-        test: /\.tsx?$/,
-        use: "ts-loader",
-        exclude: /node_modules/,
-      },
-    ],
-  },
-  watchOptions: {
-    ignored: ["./@mf-types/*", "./dist/*", "./node_modules/*"],
-    followSymlinks: false,
-  },
-  resolve: {
-    extensions: [".tsx", ".ts", ".js"],
-  },
-  devtool: "inline-source-map",
-  plugins: [
-    new ModuleFederationPlugin(mfConfig),
-    new HtmlWebpackPlugin({
-      template: "./public/index.html",
-    }),
-  ],
-});
+  }),
+);
