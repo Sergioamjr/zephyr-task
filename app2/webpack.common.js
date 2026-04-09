@@ -19,6 +19,7 @@ module.exports = {
   },
   output: {
     publicPath: "auto",
+    clean: true,
   },
   watchOptions: {
     ignored: ["./@mf-types/*", "./dist/*", "./node_modules/*"],
@@ -48,7 +49,6 @@ module.exports = {
   resolve: {
     extensions: [".tsx", ".ts", ".js"], // Allows omitting extensions in imports
   },
-  devtool: "inline-source-map",
   plugins: [
     new ModuleFederationPlugin(mfConfig),
     new HtmlWebpackPlugin({

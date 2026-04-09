@@ -20,4 +20,5 @@ module.exports = withZephyr({
   },
 })({
   extends: "./webpack.common.js",
+  mode: "production",
 });

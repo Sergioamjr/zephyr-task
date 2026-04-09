@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack serve",
-    "build": "webpack --mode production --env ",
+    "build": "webpack --mode production",
     "start:dev": "webpack serve --config webpack.dev.js"
   },
   "dependencies": {
@@ -19,6 +19,9 @@
     "uuid": "^13.0.0",
     "zephyr-webpack-plugin": "latest",
     "zustand": "^5.0.12"
+  },
+  "zephyr:dependencies": {
+    "default_webpack_mf_first": "workspace:*"
   },
   "devDependencies": {
     "@babel/core": "^7.28.5",

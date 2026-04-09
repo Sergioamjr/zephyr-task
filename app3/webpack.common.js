@@ -20,6 +20,7 @@ module.exports = {
   },
   output: {
     publicPath: "auto",
+    clean: true,
   },
   module: {
     rules: [
@@ -49,7 +50,6 @@ module.exports = {
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
   },
-  devtool: "inline-source-map",
   plugins: [
     new ModuleFederationPlugin(mfConfig),
     new HtmlWebpackPlugin({
