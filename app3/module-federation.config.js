@@ -9,7 +9,7 @@ module.exports = {
   },
   remotes: {
     default_webpack_mf_first:
-      "default_webpack_mf_first@http://localhost:3001/remoteEntry.js",
+      "default_webpack_mf_first@http://localhost:3001/mf-manifest.json",
   },
   shared: {
     react: {

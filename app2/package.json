@@ -8,6 +8,9 @@
     "build": "webpack --mode production",
     "start:dev": "webpack serve --config webpack.dev.js"
   },
+  "zephyr:dependencies": {
+    "default_webpack_mf_first": "default_webpack_mf_first@*"
+  },
   "dependencies": {
     "@module-federation/enhanced": "^0.21.2",
     "lottie-react": "^2.4.1",
