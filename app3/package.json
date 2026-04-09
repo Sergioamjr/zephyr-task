@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack serve",
-    "build": "webpack --mode production",
+    "build": "webpack --mode production --env ",
     "start:dev": "webpack serve --config webpack.dev.js"
   },
   "dependencies": {
@@ -28,6 +28,7 @@
     "autoprefixer": "^10.4.27",
     "babel-loader": "^10.0.0",
     "css-loader": "^7.1.4",
+    "dotenv-webpack": "^9.0.0",
     "html-webpack-plugin": "^5.6.4",
     "postcss": "^8.5.8",
     "postcss-loader": "^8.2.1",

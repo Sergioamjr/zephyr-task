@@ -1,9 +1,11 @@
+require("dotenv").config();
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const {
   ModuleFederationPlugin,
 } = require("@module-federation/enhanced/webpack");
 const path = require("path");
 const mfConfig = require("./module-federation.config");
+const Dotenv = require("dotenv-webpack");
 
 module.exports = {
   entry: "./src/index",
