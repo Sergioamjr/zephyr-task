@@ -1,5 +1,5 @@
 import { useProducts } from "../../hooks/useStore";
-import { Layout } from "../../components";
+import { Layout, PageTitle } from "../../components";
 import { formatMoney } from "../../utils";
 
 export default function Home() {
@@ -7,9 +7,7 @@ export default function Home() {
   return (
     <Layout>
       <>
-        <h2 data-testid="page_title" className="page_title">
-          Our Products
-        </h2>
+        <PageTitle title="Our Products" />
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6 first-of-type:mt-0">
           {products.reverse().map((product) => {
             return (
