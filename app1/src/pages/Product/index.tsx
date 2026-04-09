@@ -1,5 +1,5 @@
 import { useProducts, useCart } from "../../hooks";
-import { Layout } from "../../components";
+import { Layout, PageTitle } from "../../components";
 import { useParams } from "react-router-dom";
 import { useCallback } from "react";
 import { FaRegTrashAlt } from "react-icons/fa";
@@ -31,7 +31,7 @@ export default function Product() {
   if (!products) {
     return (
       <Layout>
-        <h2 className="page_title">Product &gt; ?</h2>
+        <PageTitle title="Product &gt; ?" />
         <p data-testid="not-found" className="main_font text-center">
           Product not found.
         </p>
@@ -42,9 +42,7 @@ export default function Product() {
   return (
     <Layout>
       <>
-        <h2 className="page_title" data-testid="page_title">
-          Product &gt; {products.title}
-        </h2>
+        <PageTitle title={`Product > ${products.title}`} />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <figure>
             <img

@@ -1,15 +1,13 @@
 import React, { Suspense } from "react";
-import { Layout } from "../../components";
+import { Layout, Loading, PageTitle } from "../../components";
 const RemoteOrder = React.lazy(() => import("mf_order/App"));
 
 export default function Orders() {
   return (
     <Layout>
       <>
-        <h2 className="page_title" data-testid="page_title">
-          Orders
-        </h2>
-        <Suspense fallback={<p>Loading...</p>}>
+        <PageTitle title="Orders" />
+        <Suspense fallback={<Loading />}>
           <RemoteOrder />
         </Suspense>
       </>

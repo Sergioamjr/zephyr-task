@@ -21,3 +21,7 @@
 .page_title {
     @apply main_font text-lg border-b inline-block mb-8;
 }
+
+body {
+    background-color: white;
+}
