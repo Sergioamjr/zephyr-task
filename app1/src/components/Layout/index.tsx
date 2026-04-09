@@ -42,7 +42,16 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <footer className=" bottom-0 w-full flex items-center h-32 justify-between p-4 bg-gray-800 text-white">
         <div className="custom_container w-full main_font text-center">
           <h2 className="text-center w-full mb-2">Zephyr Store</h2>
-          <p className="text-center w-full text-xs">made by sergioajr_</p>
+          <p className="text-center w-full text-xs">
+            made by{" "}
+            <a
+              href="https://github.com/Sergioamjr/"
+              className="border-b border-dashed"
+              target="_blank"
+            >
+              sergioamjr
+            </a>
+          </p>
         </div>
       </footer>
     </div>
