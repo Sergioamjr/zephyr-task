@@ -12,7 +12,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <div>
       <header className="flex items-center h-20 justify-between bg-gray-800 text-white">
         <div className="custom_container w-full flex items-center justify-between">
-          <h1 className="font-mono text-xl">
+          <h1 className="font-mono text-sm md:text-xl">
             <a href="/" data-testid="home-link">
               Zephyr Store
             </a>
@@ -20,12 +20,20 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <nav>
             <ul className="flex space-x-4">
               <li>
-                <a data-testid="products-link" href="/">
+                <a
+                  className="text-sm md:text-base"
+                  data-testid="products-link"
+                  href="/"
+                >
                   Products
                 </a>
               </li>
               <li>
-                <a data-testid="orders-link" href="/orders">
+                <a
+                  className="text-sm md:text-base"
+                  data-testid="orders-link"
+                  href="/orders "
+                >
                   Orders {!!orders.length && <span>({orders.length})</span>}
                 </a>
               </li>
@@ -34,7 +42,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <a
                   data-testid="checkout-link"
                   href="/checkout"
-                  className="rounded-md bg-yellow-500 text-black p-3"
+                  className="rounded-md bg-yellow-500 text-black p-3 text-sm md:text-base"
                 >
                   Checkout {totalOfItems > 0 && <span>({totalOfItems})</span>}
                 </a>
