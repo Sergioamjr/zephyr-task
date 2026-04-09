@@ -2,6 +2,12 @@
 
 The app that I built is a simple e-commerce application that allows users to browse a list of items, add them to a cart, simulate a checkout process, create and check their orders.
 
+### Home Page
+![alt](homepage.png)
+
+### Product Page
+![alt](productpage.png)
+
 I tried to think in an app where I could use the benefits of a microfrontend architecture to split the app into smaller and independent applications, for better scalability and maintainability.
 
 I also cared about the user experience and the design of the app working on the app responsiveness, performance, SEO and accessibility.
