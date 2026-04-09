@@ -6,7 +6,9 @@ export default function Checkout() {
   return (
     <Layout>
       <>
-        <h2 className="page_title">Checkout</h2>
+        <h2 className="page_title" data-testid="page_title">
+          Checkout
+        </h2>
         <Suspense fallback={<p>Loading...</p>}>
           <RemoteCheckout />
         </Suspense>

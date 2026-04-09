@@ -31,7 +31,10 @@ export default function Product() {
   if (!products) {
     return (
       <Layout>
-        <p>Product not found.</p>
+        <h2 className="page_title">Product &gt; ?</h2>
+        <p data-testid="not-found" className="main_font text-center">
+          Product not found.
+        </p>
       </Layout>
     );
   }
@@ -43,6 +46,7 @@ export default function Product() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <figure>
             <img
+              data-testid="prod-image"
               className=" w-full object-cover rounded-md md:object-top"
               src={products.imageUrl}
               alt={products.imageAlt}
@@ -64,6 +68,8 @@ export default function Product() {
               </div>
               {!isInCart ? (
                 <button
+                  aria-label="Add to cart"
+                  data-testid="add-to-cart-btn"
                   onClick={addToCartHandler}
                   className="mt-6 rounded-md bg-yellow-500 text-black p-3 w-full"
                 >
@@ -73,12 +79,14 @@ export default function Product() {
                 <>
                   <div className="flex flex-row gap-2 mt-6 justify-between">
                     <a
+                      data-testid="go-to-checkout-btn"
                       href="/checkout"
                       className="block text-black rounded-md text-center bg-yellow-500 p-3 w-full"
                     >
                       Go to Checkout
                     </a>
                     <button
+                      data-testid="remove-from-cart-btn"
                       aria-label="Remove from cart"
                       onClick={removeFromCartHandler}
                       className="rounded-md bg-red-500 text-white p-3 w-12 flex items-center justify-center"
@@ -89,6 +97,7 @@ export default function Product() {
                 </>
               )}
               <a
+                data-testid="continue-buying-btn"
                 className="text-center mt-4 block rounded-md bg-white border p-3 w-full text-blue-600"
                 href="/"
               >
