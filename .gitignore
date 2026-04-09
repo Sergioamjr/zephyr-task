@@ -11,3 +11,8 @@ deploy-url.txt
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+
+.env
+app1/.env
+app2/.env
+app3/.env
