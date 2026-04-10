@@ -49,9 +49,9 @@ The host application (app1) is responsible for rendering the main layout, naviga
 
 The app1 also shares its global state with the remote apps2 and app3, allowing them to access and manipulate the cart and orders data with instant updates across all applications.
 
-## Design Patterns and Best Practices
+## Design System and Best Practices
 
-Since it was a simple and small app, I didn't spend too much time on the design patterns but I followed some best practices in React development, such as:
+The design system that has been followed is the microfrontend as mentioned before. I also followed some best practices in React development, such as: 
 - Reusable and modular components for the different parts of the app.
 - Usage of hooks for managing state and side effects.
 - Usage of a global state management.
@@ -59,7 +59,7 @@ Since it was a simple and small app, I didn't spend too much time on the design 
 - Usage of playwright for end-to-end testing.
 
 ## My experience
-Building this app was challenging but also fun and rewarding. I worked on a microfrontend app once before but everything was setup by someone else, so this time I had to start from scratch and make all the decisions regarding the architecture and the tools to use. 
+Building this app was challenging but also fun. I worked on a microfrontend app once before but everything was setup by someone else, so this time I had to start from scratch and make all the decisions regarding the architecture and the tools to use. 
 
 The integration with Zephyr Cloud is very smooth and fast, everything is deployed instantly with zero config, I used to use ngrok and vercel for deploying and sharing a preview link with my collegues before. It's very interesting how zephyr manages the remote dependencies automatically.
 
@@ -72,3 +72,5 @@ During the development I also had a few issues that I had to solve:
  - https://module-federation.io/guide/troubleshooting/runtime/RUNTIME-008 -> https://module-federation.io/guide/troubleshooting/runtime#runtime-008
 - Circular reference between the apps causing an infinite loop.
 - Out of sync state management and mutiple instances between apps.
+
+But Zephyr and Module federation documentation is very complete and easy to follow, so I didn't have problem to solve them.
