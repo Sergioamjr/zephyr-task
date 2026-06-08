@@ -1,9 +1,11 @@
-import { useProducts } from "../../hooks/useStore";
+import { useLazyLoadImages, useProducts } from "../../hooks";
 import { Layout, PageTitle } from "../../components";
 import { formatMoney } from "../../utils";
 
 export default function Home() {
   const products = useProducts().all;
+  useLazyLoadImages();
+
   return (
     <Layout>
       <>
@@ -19,8 +21,10 @@ export default function Home() {
                 >
                   <figure className="mb-2">
                     <img
-                      className="md:h-72 w-full object-cover rounded-md md:object-top"
-                      src={product.imageUrl}
+
+                      data-src={product.imageUrl}
+                      className="product_img lazy_load md:h-72 w-full object-cover rounded-md md:object-top"
+                      // src={product.imageUrl}
                       alt={product.imageAlt}
                     />
                   </figure>
